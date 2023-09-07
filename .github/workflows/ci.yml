@@ -8,7 +8,8 @@ on:
   push:
     branches:
       - main
-
+permissions:
+  contents: write
 jobs:
   version:
     name: Update package version and publish
@@ -17,28 +18,18 @@ jobs:
       commitid: ${{ steps.commitid.outputs.commitid }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: main
-          token: ${{ secrets.GITHUB_TOKEN }}  
-      - name: setup git user
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"   
+        uses: actions/checkout@v3  
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/  
-      - name: Bump version number.
-        run: npm version patch
-      - name: Push update package.json back to main branch
+      - name: Bump version number and push back
         run: |
-          git config --local user.name github-actions
-          git config --local user.email github-actions@github.com
-          git add .
-          git commit -m "updated package version by github-action"
+          npm version patch
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git commit -am "Automated package.json version bump"
           git push
       - name: Output new commit id
         id: commitid
