@@ -23,6 +23,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           npm version patch
+          date > current_date.txt
           git add .
           git commit -m "package version updated"
           git push
