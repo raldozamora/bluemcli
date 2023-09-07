@@ -1,3 +1,3 @@
 # BlueMachine CLI
 
-The command-line interface to call the BlueMachine Server
+The command-line interface to call the BlueMachine Server. New update
