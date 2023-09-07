@@ -1,0 +1,2 @@
+# bluemcli
+demo of cli
