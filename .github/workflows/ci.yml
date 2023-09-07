@@ -18,7 +18,7 @@ jobs:
       commitid: ${{ steps.commitid.outputs.commitid }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3  
+        uses: actions/checkout@v4  
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -27,9 +27,10 @@ jobs:
       - name: Bump version number and push back
         run: |
           npm version patch
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git commit -am "Automated package.json version bump"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "package version updated"
           git push
       - name: Output new commit id
         id: commitid
