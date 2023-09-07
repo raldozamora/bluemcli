@@ -1,0 +1,17 @@
+{
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    // Some of the options for tsconfig.json file were taken from
+    // https://github.com/jason-henriksen/typescript-with-esm-no-babel-boilerplate/blob/master/tsconfig.json
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "importHelpers": true,
+  }
+}
