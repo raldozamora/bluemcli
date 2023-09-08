@@ -12,18 +12,21 @@ permissions:
   contents: write
 jobs:
   version:
-    name: Update package version and publish
+    name: Update package version
     runs-on: ubuntu-latest
     outputs:
       commitid: ${{ steps.commitid.outputs.commitid }}
     steps:
-      - name: Checkout, update package version and push back
+      - name: Checkout and update package version
         uses: actions/checkout@v4  
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
           npm version patch
-          date > current_date.txt
+      - name: Add file with git SHA to release.
+        run: echo $GITHUB_SHA > ./.gitsha.txt
+      - name: Push updates back to branch        
+        run: |        
           git add .
           git commit -m "package version updated"
           git push
