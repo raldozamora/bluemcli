@@ -4,7 +4,6 @@ import { handleAnalysisAction } from "./handlers/analyses.js";
 import { handleRepositoryAction } from "./handlers/repositories.js";
 import handleSnapshotAction from "./handlers/snapshots.js";
 import handleToolsAction from "./handlers/tools.js";
-import handleVersionAction from "./handlers/version.js";
 
 program
   .name("testmachine")
@@ -104,13 +103,6 @@ program
   .action(async (action: string, options: OptionValues) => {
     const { name } = options;
     handleToolsAction(action);
-  });
-
-program
-  .command("version")
-  .description("Query CLI version")
-  .action(async (action: string, options: OptionValues) => {
-    handleVersionAction();
-  });  
+  }); 
 
 export default program;

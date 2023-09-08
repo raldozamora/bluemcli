@@ -33,6 +33,9 @@ jobs:
       - name: Output new commit id
         id: commitid
         run: echo "commitid=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+      - name: Update code with new package version
+        run: update_cli_version.sh
+        shell: bash        
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:

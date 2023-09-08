@@ -21,7 +21,7 @@ class SystemParameters {
   }
 }
 
-export const CLI_VERSION = '0.0.2';
+export const CLI_VERSION = 'VERSION_VALUE_TO_BE_REPLACED_BEFORE_BUILD_TIME';
 export const API_URL = process.env.TM_API_URL || 'https://api.testmachine.ai';
 // export const API_URL = 'https://api-pr-166-wvaj.onrender.com';
 export const TOKEN_KEY = 'TM_TOKEN_KEY';
