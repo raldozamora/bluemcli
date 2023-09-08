@@ -1,6 +1,6 @@
 {
   "name": "bluemachinecli",
-  "version": "0.7.16",
+  "version": "0.7.17",
   "description": "The command-line interface for bluemachinecli.",
   "type": "module",
   "main": "build/index.js",
